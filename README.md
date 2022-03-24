@@ -1,5 +1,5 @@
 -----------------------------------------------------
-# Rubber Ducky UAC and AV deactivation script
+# Rubber Ducky WiFI Grab and Upload via FTP (UAC & Windows Defender deactivation included)
 
 
 REM Title:         UAC, Windows Defender and WiFi Grab via FTP

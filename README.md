@@ -8,9 +8,9 @@ REM Description    Disable UAC and download py script to disable Realtime and ta
 
 REM Author:        FX17
 
-REM Version:       2.0
+REM Version:       3.0
 
-REM Target:        Windows 10
+REM Target:        Windows 7/8/10/11
 
 REM Attackmodes:   HID
 

